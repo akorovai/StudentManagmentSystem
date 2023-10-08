@@ -1,13 +1,15 @@
-package entity;
+package dev.akorovai.studentmanagmentsystem.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
 
+
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@Entity
+@ToString
 @Table(name = "students")
 public class Student {
     @Id
@@ -19,4 +21,11 @@ public class Student {
     private String lastName;
     @Column(name = "email")
     private String email;
+
+
+    public Student(String firstName, String lastName, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
 }
