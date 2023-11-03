@@ -17,8 +17,8 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
-@EnableWebSecurity
 @RequiredArgsConstructor(onConstructor_ = {@Autowired})
+@EnableWebSecurity
 public class SecurityConfiguration {
 
     private final UserServiceInterface userService;
