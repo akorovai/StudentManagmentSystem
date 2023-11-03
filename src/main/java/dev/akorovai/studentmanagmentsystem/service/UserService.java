@@ -7,9 +7,10 @@ import dev.akorovai.studentmanagmentsystem.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -26,5 +27,10 @@ public class UserService implements UserServiceInterface {
                 registrationDto.getPassword(),
                 List.of(new Role("USER")));
         return userRepository.save(newUser);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return null;
     }
 }
