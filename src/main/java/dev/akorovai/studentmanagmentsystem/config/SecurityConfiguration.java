@@ -1,8 +1,6 @@
 package dev.akorovai.studentmanagmentsystem.config;
 
-
 import dev.akorovai.studentmanagmentsystem.service.UserServiceInterface;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,11 +15,10 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
-@RequiredArgsConstructor(onConstructor_ = {@Autowired})
 @EnableWebSecurity
 public class SecurityConfiguration {
 
-    private final UserServiceInterface userService;
+    private UserServiceInterface userService;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -34,6 +31,11 @@ public class SecurityConfiguration {
         auth.setUserDetailsService(userService);
         auth.setPasswordEncoder(passwordEncoder());
         return auth;
+    }
+
+    @Autowired
+    public void setUserService(UserServiceInterface userService) {
+        this.userService = userService;
     }
 
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -52,6 +54,7 @@ public class SecurityConfiguration {
                 )
                 .formLogin((formLogin) -> formLogin
                         .loginPage("/login")
+                        .defaultSuccessUrl("/students")
                         .permitAll()
                 )
                 .logout((logout) -> logout
