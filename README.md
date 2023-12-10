@@ -1,6 +1,6 @@
 # Student Management System
 
-This is a web-based application built with Spring Boot and Thymeleaf for managing student records. It provides features like user registration, student creation, updating, and deletion. Users can log in to the system securely and perform various operations related to student management.
+This is a web-based application built with Spring Boot and Thymeleaf for managing student records. It provides features like user registration, student creation, updating, and deletion. Users can log in to the system securely and perform various operations related to student management. Additionally, I created tests for the student controller and student service
 
 ## Table of Contents
 
@@ -16,6 +16,7 @@ Before you begin, ensure you have met the following requirements:
 - Java Development Kit (JDK) 17 or higher installed
 - PostgreSQL database server installed and running
 - Maven build tool installed
+
 
 ## Getting Started
 
@@ -47,6 +48,7 @@ To get started with the project, follow these steps:
 - Add new students
 - Edit existing student records
 - Delete student records
+- Tests for Student Service and Student Controller
 
 ## Usage
 
