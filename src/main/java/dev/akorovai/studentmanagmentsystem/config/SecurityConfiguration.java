@@ -17,7 +17,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
-
+    @Autowired
     private UserServiceInterface userService;
 
     @Bean
@@ -33,10 +33,7 @@ public class SecurityConfiguration {
         return auth;
     }
 
-    @Autowired
-    public void setUserService(UserServiceInterface userService) {
-        this.userService = userService;
-    }
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
